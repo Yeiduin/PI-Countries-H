@@ -1,0 +1,30 @@
+.fondo {
+  display: flex;
+  justify-content: center;
+  background-image: url(https://st2.depositphotos.com/3725083/5485/i/950/depositphotos_54856347-stock-photo-travel-the-world-monument-concept.jpg);
+  width: 1350px;
+  height: 700px;
+  background-size: cover;
+}
+
+.titulo {
+  text-decoration: none;
+  color: black;
+  font-size: 50px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.tituloh1 {
+  margin: 8px;
+}
+
+.bordedetitulo {
+  margin-top: 50px;
+  padding-top: px;
+  border: solid;
+  border-radius: 10px;
+}
+
+.titulo:hover {
+  color: rgb(255, 77, 0);
+}
