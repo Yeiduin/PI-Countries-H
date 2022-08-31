@@ -1,0 +1,81 @@
+.divgeneral {
+  position: relative;
+  padding-top: 5px;
+  padding-left: 30%;
+  padding-bottom: 30px;
+  height: 100%;
+  width: 75%;
+  background-color: rgb(162, 131, 229);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0 auto;
+}
+
+.divgeneral div {
+  position: relative;
+  align-content: center;
+  text-align: center;
+
+  background-color: aquamarine;
+  width: 49%;
+  padding-top: 10px;
+  border-radius: 5px;
+  border: solid 2px;
+}
+
+.divgeneral h2 {
+  position: relative;
+  width: 49%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  margin-bottom: 3px;
+  text-align: center;
+  background-color: rgb(217, 211, 21);
+  border-radius: 5px;
+  border: solid 5px;
+}
+
+.divgeneral div img {
+  position: relative;
+  width: 60%;
+}
+.divgeneral div h5 {
+  position: relative;
+  background-color: rgb(203, 142, 142);
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+  margin: 0;
+  margin-left: 25%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border: solid 1px;
+}
+
+.divgeneral div table {
+  position: relative;
+  width: 10%;
+  background-color: rgb(135, 172, 233);
+  border: solid;
+  margin-left: 18%;
+  margin-bottom: 20px;
+}
+
+.divgeneral div table tbody tr {
+  position: relative;
+  background-color: rgb(213, 217, 225);
+  border: solid 10px;
+  border-color: black;
+}
+
+.divgeneral div button {
+  position: absolute;
+  background-color: rgb(102, 240, 92);
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  bottom: 130%;
+  right: 120%;
+}

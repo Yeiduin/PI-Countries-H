@@ -31,7 +31,7 @@ const Paginado = ({ paisesPorPag, pais, paginado, paginaActual }) => {
         </ul>
         <div className={style.boton}>
           <button onClick={anterior}>anterior</button>
-          <p>{paginaActual}</p>
+          <p>pagina</p> <p>{paginaActual}</p>
           <button onClick={siguiente}>siguiente</button>
         </div>
       </nav>

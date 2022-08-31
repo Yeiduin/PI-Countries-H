@@ -1,8 +1,11 @@
+import { fitraActividad } from "../../components/funciones.js";
 import {
   GET_ALL_COUNTRIES,
   GET_COUNTRYDETAIL,
   FILTER_BY_CONTINENT,
   ORDER_ALPHANBETICAL,
+  GET_NAME_COUNTRY,
+  POST_ACTIVITY,
 } from "../actions/index.js";
 
 const initialState = {
@@ -21,8 +24,13 @@ const rootReducer = (state = initialState, action) => {
         countries: [...action.payload],
         filtrado: [...action.payload],
       };
+    case GET_NAME_COUNTRY:
+      return { ...state, countries: action.payload };
     case GET_COUNTRYDETAIL:
       return { ...state, countryDetail: action.payload };
+
+    case POST_ACTIVITY:
+      return { ...state };
 
     case FILTER_BY_CONTINENT:
       const paises = state.filtrado;
@@ -33,38 +41,12 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, countries: filtro, ordenamiento: filtro };
 
     case ORDER_ALPHANBETICAL:
-      const paises2 = state.ordenamiento;
-      const orden = function (a) {
-        if (a === "asc") {
-          const ascen = paises2.sort(function (a, b) {
-            if (a === b) {
-              return 0;
-            }
-            if (a.name < b.name) {
-              return -1;
-            }
-            return 1;
-          });
+      const pais = state.ordenamiento;
+      const dato = action.payload;
 
-          return ascen;
-        }
-        if (action.payload === "desc") {
-          const desc = paises2.sort(function (a, b) {
-            if (a === b) {
-              return 0;
-            }
-            if (a.name > b.name) {
-              return -1;
-            }
-            return 1;
-          });
+      const filact = fitraActividad(dato, pais);
 
-          return desc;
-        }
-      };
-      const orden2 = orden(action.payload);
-
-      return { ...state, countries: orden2 };
+      return { ...state, countries: filact };
 
     default:
       return state;
