@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import style from "../styles/detalle.module.css";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ const DetallesDePais = ({ match }) => {
   useEffect(() => {
     dispatch(getCountryDetail(match.params.id));
     console.log(match.params);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const detalle = useSelector((state) => state.countryDetail);
 
@@ -61,7 +62,7 @@ const DetallesDePais = ({ match }) => {
                 <tr key={i}>
                   <td> {el.name}</td>
                   <td> {el.dificult}</td>
-                  <td> {el.duration}</td>
+                  <td> {el.duration} dias</td>
                   <td>{el.season}</td>
                 </tr>
               ))
@@ -75,11 +76,10 @@ const DetallesDePais = ({ match }) => {
             )}
           </tbody>
         </table>
-
-        <Link to="/Home">
-          <button>Regresar</button>
-        </Link>
       </div>
+      <Link to="/Home">
+        <button>Regresar</button>
+      </Link>
     </div>
   );
 };

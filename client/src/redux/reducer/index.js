@@ -3,7 +3,7 @@ import {
   GET_ALL_COUNTRIES,
   GET_COUNTRYDETAIL,
   FILTER_BY_CONTINENT,
-  ORDER_ALPHANBETICAL,
+  FILTER_TOURISTIC,
   GET_NAME_COUNTRY,
   POST_ACTIVITY,
 } from "../actions/index.js";
@@ -40,7 +40,7 @@ const rootReducer = (state = initialState, action) => {
           : paises.filter((p) => p.continente === action.payload);
       return { ...state, countries: filtro, ordenamiento: filtro };
 
-    case ORDER_ALPHANBETICAL:
+    case FILTER_TOURISTIC:
       const pais = state.ordenamiento;
       const dato = action.payload;
 

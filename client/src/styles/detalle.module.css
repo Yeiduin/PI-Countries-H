@@ -1,16 +1,17 @@
 .divgeneral {
   position: relative;
   padding-top: 5px;
-  padding-left: 30%;
-  padding-bottom: 30px;
+
   height: 100%;
-  width: 75%;
-  background-color: rgb(162, 131, 229);
+  width: 100%;
+  background-image: url(https://c8.alamy.com/comp/2BP8G50/the-mapa-mundi-in-high-resolution-painted-over-white-2BP8G50.jpg);
+  background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0 auto;
 }
 
 .divgeneral div {
+  margin: 0px auto;
   position: relative;
   align-content: center;
   text-align: center;
@@ -27,7 +28,7 @@
   width: 49%;
   padding-top: 10px;
   padding-bottom: 10px;
-
+  margin: 0px auto;
   margin-bottom: 3px;
   text-align: center;
   background-color: rgb(217, 211, 21);
@@ -55,27 +56,31 @@
 
 .divgeneral div table {
   position: relative;
-  width: 10%;
+
+  display: table-caption;
+
+  width: 100%;
   background-color: rgb(135, 172, 233);
   border: solid;
-  margin-left: 18%;
+  margin-left: 43%;
   margin-bottom: 20px;
 }
 
 .divgeneral div table tbody tr {
   position: relative;
+  width: 10px;
   background-color: rgb(213, 217, 225);
   border: solid 10px;
   border-color: black;
 }
 
-.divgeneral div button {
+.divgeneral button {
   position: absolute;
   background-color: rgb(102, 240, 92);
+  width: 100px;
   font-size: 20px;
   padding: 8px;
   border-radius: 5px;
-  margin-bottom: 20px;
-  bottom: 130%;
-  right: 120%;
+  margin-top: 0px;
+  top: 2%;
 }

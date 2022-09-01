@@ -1,20 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 import {
+  filterByActivytourist,
   filterByContinent,
   getAllCountries,
-  orderAlphabetical,
 } from "../redux/actions";
 import style from "../styles/paises.module.css";
 import Buscador from "./Buscador";
-import {
-  Actividades,
-  alfabetoc,
-  filtromas,
-  filtromenos,
-  fitraActividad,
-} from "./funciones";
+import { Actividades, alfabetoc, filtromas, filtromenos } from "./funciones";
 import Paginado from "./Paginado";
 import Pais from "./Pais";
 
@@ -27,7 +22,7 @@ const Paises = () => {
   const [activar, setActivar] = useState(false);
   const [paginaActual, setPaginaActual] = useState(1);
   const [paisesPorPag, setPaisesPorPag] = useState(10);
-  const [orden, setOrden] = useState("");
+
   const ultimoPaisDeLaPag = paginaActual * paisesPorPag;
   const primerPaisDeLaPag = ultimoPaisDeLaPag - paisesPorPag;
   const paisesPagActual = pais.slice(primerPaisDeLaPag, ultimoPaisDeLaPag);
@@ -42,6 +37,7 @@ const Paises = () => {
 
     setActivar(!activar);
     console.log(pais);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filtroContinente = (e) => {
@@ -60,13 +56,11 @@ const Paises = () => {
       const w = pais.sort(filtromas);
       pais = w;
     }
-    let ver = document.getElementById("48").value;
+
     dispatch(filterByContinent("Todos"));
     setActivar(!activar);
   }
   const activadoor = (e) => {
-    let ver = document.getElementById("48").value;
-    console.log(ver);
     dispatch(filterByContinent("Todos"));
     if (!activar) {
       return console.log("no hice nada");
@@ -82,36 +76,32 @@ const Paises = () => {
 
   const fitroturistico = (e) => {
     e.preventDefault();
-    dispatch(orderAlphabetical(e.target.value));
+    dispatch(filterByActivytourist(e.target.value));
     setPaginaActual(1);
   };
 
   return (
-    <div>
+    <div className={style.general}>
       {pais2[0] ? (
         <div>
           <div className={style.titulo}>
-            <h1>paises del mundo</h1>
+            <h1>Paises del Mundo</h1>
             <Buscador></Buscador>
-            <Link to="/crearActividad">
-              <button>crearActividad</button>
-            </Link>
 
-            <div>
+            <div className={style.losfiltros}>
+              <p className={style.parafofiltro}>Alfabetico</p>
               <select
                 disabled={activar}
                 onChange={(e) => {
-                  //setAlfa(e.target.value);
-
                   alfabetoc(e.target.value, pais);
                   activadoor2(e);
-                  //ordenAlfabetico(e);
                 }}
               >
                 <option value="ninguno">Filtrado: {alfa}</option>
                 <option value="asc">orden de A - Z</option>
                 <option value="desc">orden de Z - A</option>
               </select>
+              <p className={style.parafofiltro}>Poblacion</p>
               <select
                 disabled={activar}
                 onChange={(e) => {
@@ -122,6 +112,7 @@ const Paises = () => {
                 <option value="menos">menos</option>
                 <option value="mas">mas</option>
               </select>
+              <p className={style.parafofiltro}>Actividad turistica</p>
               <select
                 onChange={(e) => {
                   fitroturistico(e);
@@ -138,6 +129,7 @@ const Paises = () => {
               <button onClick={activadoor}>reset filtro</button>
 
               <div>
+                <p className={style.parafofiltro}>Continente</p>
                 <select
                   id="48"
                   onChange={(e) => {
@@ -156,7 +148,7 @@ const Paises = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className={style.paginadoo}>
             <Paginado
               paisesPorPag={paisesPorPag}
               pais={pais.length}
@@ -178,7 +170,7 @@ const Paises = () => {
         </div>
       ) : (
         <div>
-          <p>cargando la informacion del servidor...</p>
+          <h2>cargando la informacion del servidor...</h2>
           <img
             src="https://i.gifer.com/origin/80/809f5c2aab51871f3544d24b9b88ce23_w200.gif"
             alt="imagen"

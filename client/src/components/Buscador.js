@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import style from "../styles/paises.module.css";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getAllCountries, getNameCountry } from "../redux/actions";
 
@@ -21,7 +23,7 @@ const Buscador = () => {
     dispatch(getAllCountries());
   }
   return (
-    <div>
+    <div className={style.buscaador}>
       <input
         type="text"
         placeholder="Buscar pais"
@@ -31,6 +33,9 @@ const Buscador = () => {
         Buscar
       </button>
       <button onClick={volver}>volver</button>
+      <Link to="/crearActividad">
+        <button>crearActividad</button>
+      </Link>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "../styles/crearactiv.module.css";
 import { Link } from "react-router-dom";
 import { getAllCountries, postTouristActivy } from "../redux/actions";
-import { organizar } from "./funciones";
+import { expresiones, organizar } from "./funciones";
 
 const Crearactividadturist = () => {
   const dispatch = useDispatch();
@@ -21,29 +21,27 @@ const Crearactividadturist = () => {
   useEffect(() => {
     dispatch(getAllCountries());
     console.log("se ejecuto");
-    console.log(input);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [save]);
 
   function tomarValores(e) {
     e.preventDefault();
+
     setInput({ ...input, [e.target.name]: e.target.value });
   }
 
   function tomarSelec(e) {
     e.preventDefault();
-    /*  if (e.target.value === "Afganistán" || "Verano") {
-      if ([e.target.name] === "pais") {
-        setInput({
-          ...input,
-          [e.target.name]: [...input.pais, "Afganistán"],
-        });
-        return console.log(input);
-      }
-      */
+    let repetido = input.pais.find((p) => p === e.target.value);
+    if (repetido) {
+      return console.log("esta repetido");
+    }
+
     setInput({ ...input, [e.target.name]: [...input.pais, e.target.value] });
   }
   function defecto() {
     // eslint-disable-next-line eqeqeq
+
     if (input.pais == false) {
       setInput((input.pais = ["Afganistán"]));
       console.log(input);
@@ -56,6 +54,7 @@ const Crearactividadturist = () => {
 
     dispatch(postTouristActivy(input));
     dispatch(getAllCountries());
+    alert("has creado una nueva actividad");
   }
   function limpiar() {
     let form = document.getElementById("45");
@@ -67,6 +66,18 @@ const Crearactividadturist = () => {
       season: "Verano",
       pais: [],
     });
+  }
+
+  function validacionInput(e) {
+    if (expresiones.usuario.test(input.name)) {
+      console.log("nombre OK");
+    } else {
+      e.target.value = "";
+      setInput({ ...input, name: "" });
+      alert(
+        "el nombre debe tener entre 4 y 35 caracteres y no debe tener caracteres especiales"
+      );
+    }
   }
 
   return (
@@ -92,7 +103,9 @@ const Crearactividadturist = () => {
             required
             value={input.name}
             name="name"
+            id="nombree"
             onChange={tomarValores}
+            onBlur={(e) => validacionInput(e)}
           />
           <label>
             <p>Dificultad</p>
@@ -108,7 +121,7 @@ const Crearactividadturist = () => {
             onChange={tomarValores}
           />
           <label>
-            <p>Duracion</p>
+            <p>Duracion en dias</p>
           </label>
           <input
             className={style.inputnum}
@@ -123,7 +136,7 @@ const Crearactividadturist = () => {
           <label>
             <p>Temporada</p>
           </label>
-          <select name="season" onChange={tomarValores}>
+          <select name="season" required onChange={tomarValores}>
             {temporadas.map((e, o) => (
               <option key={o} value={e}>
                 {e}

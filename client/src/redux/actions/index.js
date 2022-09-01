@@ -2,7 +2,7 @@ import axios from "axios";
 export const GET_ALL_COUNTRIES = "GET_ALL_COUNTRIES";
 export const GET_COUNTRYDETAIL = "GET_COUNTRYDETAIL";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
-export const ORDER_ALPHANBETICAL = "ORDER_ALPHANBETICAL";
+export const FILTER_TOURISTIC = "FILTER_TOURISTIC";
 export const GET_NAME_COUNTRY = "GET_NAME_COUNTRY";
 export const POST_ACTIVITY = "POST_ACTIVITY";
 
@@ -42,8 +42,8 @@ export const getNameCountry = (name) => {
 };
 
 export const postTouristActivy = (datos) => {
-  try {
-    return async function (dispatch) {
+  return async function (dispatch) {
+    try {
       const respuesta = await axios.post(
         `http://localhost:3004/activities`,
 
@@ -53,16 +53,16 @@ export const postTouristActivy = (datos) => {
       dispatch({ type: POST_ACTIVITY, payload: respuesta });
 
       console.log(datos);
-    };
-  } catch (error) {
-    console.log(error);
-  }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 };
 
 export const filterByContinent = (payload) => {
   return { type: FILTER_BY_CONTINENT, payload };
 };
 
-export const orderAlphabetical = (dato) => {
-  return { type: ORDER_ALPHANBETICAL, payload: dato };
+export const filterByActivytourist = (dato) => {
+  return { type: FILTER_TOURISTIC, payload: dato };
 };

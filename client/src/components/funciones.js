@@ -72,11 +72,11 @@ export function fitraActividad(nombre, pais) {
     p.activityturists.find((a) => a.name === nombre)
   );
   return resul;
-  console.log(resul);
 }
 
 export function Actividades(pais2) {
   const act = [];
+  // eslint-disable-next-line no-unused-vars
   const sacar = pais2.forEach((p) =>
     p.activityturists.forEach((p) => act.push(p.name))
   );
@@ -86,3 +86,11 @@ export function Actividades(pais2) {
 
   return actlisto;
 }
+
+export const expresiones = {
+  usuario: /^[a-zA-Z0-9ñÑ ]{4,35}$/, // Letras, numeros, guion y guion_bajo
+  nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+  password: /^.{4,12}$/, // 4 a 12 digitos.
+  correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+  telefono: /^\d{7,14}$/, // 7 a 14 numeros.
+};

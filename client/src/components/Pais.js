@@ -7,9 +7,8 @@ const Pais = ({ name, bandera, continente, id }) => {
     <div>
       <Link to={`/countries/${id}`} className={style.paiseslink}>
         <h3>{name}</h3>
-        <div>
-          <img src={bandera} alt="imagen de bandera" width={200} height={120} />
-        </div>
+
+        <img src={bandera} alt="imagen de bandera" width="100%" />
       </Link>
       <p>{continente}</p>
     </div>

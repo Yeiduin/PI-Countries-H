@@ -14,9 +14,9 @@
   justify-content: center;
   margin-left: 40%;
   height: 20px;
-  background-color: rgb(187, 255, 0);
 }
 .boton p {
+  color: rgb(237, 232, 199);
   position: relative;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   bottom: 14px;
@@ -31,8 +31,17 @@
 }
 
 .paginado {
-  background-color: aqua;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+  .paginado {
+    background-color: rgb(5, 5, 5);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
