@@ -40,8 +40,8 @@ const Crearactividadturist = () => {
     setInput({ ...input, [e.target.name]: [...input.pais, e.target.value] });
   }
   function defecto() {
-    // eslint-disable-next-line eqeqeq
 
+    // eslint-disable-next-line eqeqeq
     if (input.pais == false) {
       setInput((input.pais = ["Afganistán"]));
       console.log(input);
